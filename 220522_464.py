@@ -89,6 +89,32 @@ class Solution:
         visited = [0 for _ in range(1 << maxChoosableInteger)]
         return foo(0, 0)
 
+# 逆序
+# class Solution:
+#     def canIWin(self, maxChoosableInteger: int, desiredTotal: int) -> bool:
+#         if desiredTotal < maxChoosableInteger:
+#             return True
+#         if maxChoosableInteger * (maxChoosableInteger + 1) // 2 < desiredTotal:
+#             return False
+
+#         def foo(n, total):
+#             if visited[n] == 1:
+#                 return True
+#             if visited[n] == 2:
+#                 return False
+#             for i in range(maxChoosableInteger - 1, -1, -1):
+#                 if ((1 << i) & n) == 0:
+#                     # 判断当前TF和下一个状态(player2)TF。下一个状态是T，2赢1输
+#                     if total + i + 1 >= desiredTotal or not foo((1 << i) | n,  total + i + 1):
+#                         visited[n] = 1
+#                         return True
+#             visited[n] = 2
+#             return False
+        
+#         visited = [0 for _ in range(1 << maxChoosableInteger)]
+#         return foo(0, 0)
+
+
 
 # 核心思路：缓存，把复杂度从n!降低到2^n*n（空间换时间，2^n是状态数，n是每个状态的计算复杂度）
 
