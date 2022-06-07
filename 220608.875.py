@@ -1,8 +1,8 @@
 class Solution:
     def minEatingSpeed(self, piles: List[int], h: int) -> int:
         # mid 去除每一堆 piles[i] 计算时间 总和与h对比
-        # sum > h: 不对 l = mid + 1 
-        # sum <= h: 可以 r = mid (找刚刚大的位置)
+        # sum > h: l = mid + 1 总时长大于h, 底数小了 左加一
+        # sum <= h: r = mid 总时长小于h, 吃快了 (要找刚好等于h的位置)
         def check(mid, h):
             ans = 0
             for n in piles:
